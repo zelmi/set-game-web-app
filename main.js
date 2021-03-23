@@ -24,8 +24,12 @@ function Player(name) {
 
 	this.element = createPlayerElement(this)
 
-	this.incrementScore = function (score) {
-		this.element.innerText = `${this.name}: ${++this.currentScore}`
+	this.updateScore = function (score) {
+		this.element.innerText = `${this.name}: ${score}`
+	}
+
+	this.incrementScore = function () {
+		this.updateScore(++this.currentScore)
 	}
 }
 
@@ -42,7 +46,10 @@ const createCardElement = card => {
 		.parseFromString(
 			`
 		<div class="card">
-			<p><img src="images/${card.amount}_${card.color}_${card.shading}_${card.symbol}.png" class="center"></p>
+			<p>${card.amount}</p>
+			<p>${card.color}</p>
+			<p>${card.symbol}</p>
+			<p>${card.shading}</p>
 		</div>
 	`,
 			'text/html'
@@ -113,10 +120,13 @@ const gameStage = document.getElementById('gameStage')
 // @ts-ignore
 const addPlayersList = document.getElementById('addPlayersList')
 
+/**
+ * @type {Player[]}
+ */
 const players = []
 
 /**
- *
+ * Goes to the "addPlayers" stage
  */
 function goToAddPlayersStage() {
 	introStage.style.display = 'none'
@@ -143,7 +153,16 @@ function addPlayerToGame() {
 	const addPlayersInput = document.getElementById('addPlayersInput')
 
 	const listItem = document.createElement('li')
-	listItem.innerText = addPlayersInput.value
+	const name = addPlayersInput.value
+	listItem.innerText = name
+
+	if (players.some(player => player.name === name)) {
+		alert(`Player with the name "${name}" already exists`)
+		return
+	} else if (name.length === 0) {
+		alert('Name may not be empty')
+		return
+	}
 
 	/**
 	 * @type {HTMLUListElement}
@@ -225,7 +244,7 @@ const isSet = (cardOne, cardTwo, cardThree) => {
 	const allDifferentShading = cardOne.shading !== cardTwo.shading && cardTwo.shading !== cardThree.shading
 	const allSameOrDifferentShading = allSameShading || allDifferentShading
 
-	return allSameOrDifferentAmount && allSameOrDifferentColor && allSameOrDifferentSymbol && allSameOrDifferentShading
+	return true // allSameOrDifferentAmount && allSameOrDifferentColor && allSameOrDifferentSymbol && allSameOrDifferentShading
 }
 
 /**
@@ -295,7 +314,10 @@ const removeCardsFromDisplayedAddThemToUsed = (cards, cardsDisplayed, cardsUsed)
 		return !card.equals(cards[0]) && !card.equals(cards[1]) && !card.equals(cards[2])
 	})
 
-	cardsUsed.push(...cardsDisplayed.splice(0, cardsDisplayed.length, ...unselectedCards))
+	const removed = cardsDisplayed.splice(0, cardsDisplayed.length, ...unselectedCards)
+	console.log(removed.length)
+
+	cardsUsed.push(...removed)
 }
 
 /**
@@ -324,8 +346,6 @@ function submitCardsToggled(cardsDisplayed, cardsUsed, cardsAvailable, players) 
 	if (cardsToggled.length !== 3) {
 		alert('Must have 3 cards only')
 	} else if (isSet(cardsToggled[0], cardsToggled[1], cardsToggled[2])) {
-		alert('This is a set!')
-
 		cardsToggled.forEach(card => card.toggle())
 
 		/**
@@ -334,7 +354,7 @@ function submitCardsToggled(cardsDisplayed, cardsUsed, cardsAvailable, players) 
 		let winner
 
 		do {
-			const input = prompt('Which player found this set?')
+			const input = prompt('This is a set! Which player found this set?')
 			winner = players.find(player => player.name === input)
 
 			if (!winner) {
@@ -342,7 +362,6 @@ function submitCardsToggled(cardsDisplayed, cardsUsed, cardsAvailable, players) 
 			}
 		} while (!winner)
 
-		alert(`Good for you ${winner.name}`)
 		winner.incrementScore()
 
 		removeCardsFromDisplayedAddThemToUsedAndRemoveFromScreen(cardsToggled, cardsDisplayed, cardsUsed)
@@ -353,16 +372,18 @@ function submitCardsToggled(cardsDisplayed, cardsUsed, cardsAvailable, players) 
 
 		if (cardsDisplayed.length === 0) {
 			const winner = players.reduce((pers, cur) => (cur.currentScore > pers.currentScore ? cur : pers))
-			alert(`game over, ${winner.name} won with ${winner.currentScore} points`)
 			winner.winCount++
-			players.forEach(player => {
-				player.currentScore = -1
-				player.incrementScore()
-			})
+			players.forEach(player => player.updateScore(0))
 
-			if (prompt('Continue Playing? [y/n]') === 'y') {
+			if (
+				prompt(
+					`Game Over. ${winner.name} won with ${winner.currentScore} points\n\nContinue playing? [y/n]`
+				) === 'y'
+			) {
 				cardsAvailable.push(...cardsUsed.splice(0))
 				removeCardsFromAvailableAddThemToDisplayedAndDrawThemToScreen(cardsAvailable, cardsDisplayed, 12)
+			} else {
+				goToConclusionStage()
 			}
 		}
 	} else {
@@ -403,7 +424,21 @@ function playSet(players) {
 }
 
 function goToGameStage() {
+	if (players.length === 0) {
+		alert('There must be at least one player')
+		return
+	}
+
 	addPlayersStage.style.display = 'none'
 	gameStage.style.display = 'block'
+
 	playSet(players)
+}
+
+function goToConclusionStage() {
+	const gameStage = document.getElementById('gameStage')
+	const conclusionStage = document.getElementById('conclusionStage')
+
+	gameStage.style.display = 'none'
+	conclusionStage.style.display = 'block'
 }
