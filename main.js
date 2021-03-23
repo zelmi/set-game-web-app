@@ -84,7 +84,7 @@ function Card(amount, color, symbol, shading) {
 
 	this.toggle = () => {
 		if (this.toggled) {
-			this.element.style.outline = 'none'
+			this.element.style.outline = 'solid 1px black'
 		} else {
 			this.element.style.outline = 'solid 2px blue'
 		}
