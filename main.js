@@ -42,10 +42,7 @@ const createCardElement = card => {
 		.parseFromString(
 			`
 		<div class="card">
-			<p>${card.amount}</p>
-			<p>${card.color}</p>
-			<p>${card.symbol}</p>
-			<p>${card.shading}</p>
+			<p><img src="images/${card.amount}_${card.color}_${card.shading}_${card.symbol}.png" class="center"></p>
 		</div>
 	`,
 			'text/html'
