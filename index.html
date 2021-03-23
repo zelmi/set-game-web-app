@@ -1,36 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Game of Set</title>
-		<link rel="stylesheet" href="./styles.css" />
-		<script src="./main.js" defer></script>
-	</head>
-	<body>
-		<div id="introStage" style="display: block">
-			<h1>Welcome to the Game of Set!</h1>
-			<button onclick="goToAddPlayersStage()">Continue</button>
-		</div>
-		<div id="addPlayersStage" style="display: none">
-			<h1>Add Players!</h1>
-			<ul id="addPlayersList"></ul>
-			<input type="text" id="addPlayersInput" />
-			<button onclick="addPlayerToGame(players)">Add Player</button>
-			<button onClick="goToGameStage()">Continue</button>
-		</div>
-		<div id="gameStage" style="display: none">
-			<h1>Game of Set!</h1>
-			<div id="grid">
-				<div id="displayedCardsGrid"></div>
-				<ul id="playerList"></ul>
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Game of Set</title>
+	<link rel="stylesheet" href="./styles.css" />
+	<script src="./main.js" defer></script>
+</head>
+
+<body>
+	<div id="introStage" style="display: block">
+		<img src="images/set_logo.png" alt="" id="logo">
+		<button class="bottom_button" onclick="goToAddPlayersStage()">Continue</button>
+	</div>
+	<div id="addPlayersStage" style="display: none">
+		<h1>Add Players!</h1>
+		<ul id="addPlayersList"></ul>
+		<input type="text" id="addPlayersInput" />
+		<button id="add_button" onclick="addPlayerToGame(players)">Add Player</button>
+		<button class="bottom_button" onClick="goToGameStage()">Continue</button>
+	</div>
+	<div id="gameStage" style="display: none">
+		<h1>Find a Set!</h1>
+		<div id="grid">
+			<div id="displayedCardsGrid"></div>
+			<div id="sideboard">
+				<div id="scoreboard">
+					<p>Scoreboard</p>
+					<ul id="playerList"></ul>
+				</div>
+				<button id="addMoreCardsButton">Add More Cards</button>
 			</div>
-			<button id="submitSetButton">Submit Set</button>
-			<button id="addMoreCardsButton">Add More Cards</button>
 		</div>
-		<div id="conclusionStage" style="display: none">
-			<h1>Thanks for playing</h1>
-		</div>
-	</body>
+		<button id="submitSetButton">Submit Set</button>
+	</div>
+	<div id="conclusionStage" style="display: none">
+		<h1>Thanks for playing</h1>
+	</div>
+</body>
+
 </html>
