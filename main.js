@@ -46,10 +46,7 @@ const createCardElement = card => {
 		.parseFromString(
 			`
 		<div class="card">
-			<p>${card.amount}</p>
-			<p>${card.color}</p>
-			<p>${card.symbol}</p>
-			<p>${card.shading}</p>
+			<img src="images/${card.amount}_${card.color}_${card.shading}_${card.symbol}.png">
 		</div>
 	`,
 			'text/html'
@@ -87,9 +84,9 @@ function Card(amount, color, symbol, shading) {
 
 	this.toggle = () => {
 		if (this.toggled) {
-			this.element.style.backgroundColor = 'lightblue'
+			this.element.style.outline = 'none'
 		} else {
-			this.element.style.backgroundColor = 'pink'
+			this.element.style.outline = 'solid 2px blue'
 		}
 
 		this.toggled = !this.toggled
@@ -244,7 +241,7 @@ const isSet = (cardOne, cardTwo, cardThree) => {
 	const allDifferentShading = cardOne.shading !== cardTwo.shading && cardTwo.shading !== cardThree.shading
 	const allSameOrDifferentShading = allSameShading || allDifferentShading
 
-	return true // allSameOrDifferentAmount && allSameOrDifferentColor && allSameOrDifferentSymbol && allSameOrDifferentShading
+	return allSameOrDifferentAmount && allSameOrDifferentColor && allSameOrDifferentSymbol && allSameOrDifferentShading
 }
 
 /**
