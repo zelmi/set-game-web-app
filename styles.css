@@ -7,7 +7,7 @@ html {
 }
 
 body {
-	width: 90%;
+	width: 90vw;
 	margin: 0 auto;
 }
 
@@ -21,13 +21,15 @@ button {
 	width: 20vw;
 	height: 10vh;
 	border: none;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	transition: .5s;
 	/* font  */
 	font-family: sans-serif;
 	font-style: normal;
 	font-weight: normal;
 	font-size: 2vw;
 	color: #FFFFFF;
-	transition: .5s;
+	
 }
 
 button:hover {
@@ -48,8 +50,8 @@ button:hover {
 }
 
 img#logo {
-	width: 40vw;
-	height: 40vh;
+	width: 40%;
+	height: 40%;
 	margin-top: 10vh;
 }
 
@@ -86,7 +88,7 @@ h1 {
 	font-size: 1.5vw;
 }
 
-#button2 {
+.button2 {
 	margin-left: 35vw;
 	/* background-color: aquamarine; */
 }
@@ -94,8 +96,8 @@ h1 {
 /* third part  */
 
 div.card {
-	width: 225px;
-	height: 170px;
+	width: 90%;
+	height: 20vh;
 	text-align: center;
 	display: flex;
 	border: 1px solid #000000;
@@ -122,52 +124,53 @@ div.card img {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	grid-template-rows: repeat(3, 1fr);
-	gap: 20px;
-	height: 574px;
-	width: 982px;
+	gap: 2vh;
+	height: 65vh;
+	width: 65vw;
 	overflow-y: scroll;
 }
 
 #sideboard {
-	padding-left: 60px;
+	padding-left: 3vw;
 }
 
 #scoreboard {
-	width: 299px;
-	height: 339px;
+	width: 20vw;
+	height: 45vh;
 	background: #FFFFFF;
 	border: 1px solid #C1AD42;
 	box-sizing: border-box;
 	/* font  */
-	font-family: Roboto;
+	font-family: sans-serif;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 24px;
-	line-height: 28px;
+	font-size: 1.5vw;
+	/* line-height: 28px; */
 	text-align: center;
 	color: #C1AD42;
 }
 
 #addMoreCardsButton {
-	width: 281px;
-	height: 71.87px;
+	width: 20vw;
+	/* height: 71.87px; */
 	background: #FFFFFF;
 	border: 1px solid #C1AD42;
 	box-sizing: border-box;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	/* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
 	/* font  */
-	font-family: Roboto;
+	font-family: sans-serif;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 24px;
-	line-height: 28px;
+	font-size: 1.5vw;
+	/* line-height: 28px; */
 	text-align: center;
 	color: #C1AD42;
-	margin-left: 9px;
-	margin-top: 57px;
+	/* margin-left: 9px; */
+	margin-top: 5vh;
 }
 
 #submitSetButton {
-	position: absolute;
-	left: 524px;
+	/* position: absolute;
+	left: 524px; */
+	margin-top: 6vh;
 }
