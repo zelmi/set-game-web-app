@@ -15,6 +15,7 @@ button {
 	background: #C1AD42;
 	width: 391px;
 	height: 80px;
+	border: none;
 	/* font  */
 	font-family: sans-serif;
 	font-style: normal;
