@@ -39,7 +39,7 @@ const addPlayersInput = document.getElementById('addPlayersInput')
  */
 function goToAddPlayersStage() {
 	introStage.style.display = 'none'
-	addPlayersStage.style.display = 'block'
+	addPlayersStage.style.display = 'grid'
 }
 
 /**
