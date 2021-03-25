@@ -21,7 +21,9 @@ After no remaining cards are showing on the screen, a winner is declared, and th
 
 ## Testing
 
-Within the src folder of the project, there is a tests.js file. To run these tests, set the TESTING const to true. If you do not want to run these tests, set it to false. To view the results of the tests, open the console within Mozilla Firefox.
+Within the src folder of the project, there is a tests.js file. To run these tests, set the TESTING const to true. If you do not want to run these tests, set it to false. 
+
+To view the results of the tests, open the console within Mozilla Firefox.
 
 ## Extra Features
 
