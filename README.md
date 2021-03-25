@@ -19,6 +19,10 @@ On the right hand side of the screen, a scoreboard is shown. The first number ne
 
 After no remaining cards are showing on the screen, a winner is declared, and the user is prompted to continue playing or not. 
 
+## Testing
+
+Within the src folder of the project, there is a tests.js file. To run these tests, set the TESTING const to true. If you do not want to run these tests, set it to false. To view the results of the tests, open the console within Mozilla Firefox.
+
 ## Extra Features
 
 Scoreboard functionality to keep track of individual player wins.
