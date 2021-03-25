@@ -74,6 +74,7 @@ h1 {
 	color: #C1AD42;
 	width: 100%;
 	text-align: center;
+	
 }
 
 #addPlayersInput {
@@ -131,7 +132,7 @@ div.card img {
 	padding-top: 10px;
 	padding-left: 10px;
 	padding-right: 10px;
-	padding-bottom: 10px;
+	padding-bottom: 15px;
 }
 
 #sideboard {
@@ -170,13 +171,14 @@ div.card img {
 	text-align: center;
 	color: #C1AD42;
 	/* margin-left: 9px; */
-	margin-top: 5vh;
+	margin-top: 3vh;
 }
 
 #submitSetButton {
-	/* position: absolute;
-	left: 524px; */
-	margin-top: 6vh;
+	position: absolute;
+	bottom: 0;
+	/*left: 524px; */
+	margin-bottom: 4vh;
 }
 
 #addPlayersList {
@@ -185,4 +187,8 @@ div.card img {
 	color: #C1AD42;
 	width: 100%;
 	text-align: center;
+}
+
+#playerList {
+	text-align: left;
 }
