@@ -23,7 +23,7 @@ After no remaining cards are showing on the screen, a winner is declared, and th
 
 Scoreboard functionality to keep track of individual player wins.
 
-Responsiveness of page to adapt to different window sizes.
+Responsiveness of page to adapt to different window sizes. To test responsivenss, use the browser dev tools within Mozilla Firefox.
 
 ## Contributions
 
