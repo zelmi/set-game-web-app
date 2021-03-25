@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -15,10 +16,32 @@
 				<img src="images/set_logo.png" alt="" id="logo" />
 			</div>
 			<button class="bottom_button" onclick="goToAddPlayersStage()">Continue</button>
+=======
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Game of Set</title>
+	<link rel="stylesheet" href="./styles.css" />
+	<script src="./setLogic.js" defer></script>
+	<script src="./domFuncs.js" defer></script>
+</head>
+
+<body>
+	<div class="section" id="introStage" style="display: flex">
+		<img src="images/set_logo.png" alt="" id="logo" />
+		<button class="bottom_button" onclick="goToAddPlayersStage()">Continue</button>
+	</div>
+	<!-- second part  -->
+	<div class="section" id="addPlayersStage" style="display: none">
+		<div class="grid-element">
+			<h1 class="grid-element">Add Players!</h1>
+>>>>>>> 53d59a4d6608cf5dc9cadb5b15bf57d0f10e2f01
 		</div>
-		<div id="addPlayersStage" style="display: none">
-			<h1>Add Players!</h1>
+		<div class="grid-element">
 			<ul id="addPlayersList"></ul>
+<<<<<<< HEAD
 			<form id="addPlayersForm">
 				<input type="text" id="addPlayersInput" autofocus />
 				<br />
@@ -38,11 +61,33 @@
 					<button id="addMoreCardsButton">Add More Cards</button>
 					<br />
 					<button id="submitSetButton">Submit Set</button>
+=======
+		</div>
+		<div class="grid-element"><input class="grid-element" type="text" id="addPlayersInput" /></div>
+		<div class="grid-element"><button class="grid-element" id="add_button" onclick="addPlayerToGame(players)">Add
+				Player</button>
+		</div>
+		<button class="bottom_button button2" onclick="goToGameStage()">Continue</button>
+	</div>
+	<!-- third part  -->
+	<div class="section" id="gameStage" style="display: none">
+		<h1>Find a Set!</h1>
+		<div id="grid">
+			<div id="displayedCardsGrid"></div>
+			<div id="sideboard">
+				<div id="scoreboard">
+					<p>Scoreboard</p>
+					<ul id="playerList"></ul>
+>>>>>>> 53d59a4d6608cf5dc9cadb5b15bf57d0f10e2f01
 				</div>
+				<button id="addMoreCardsButton">Add More Cards</button>
 			</div>
 		</div>
-		<div id="conclusionStage" style="display: none">
-			<h1>Thanks for playing</h1>
-		</div>
-	</body>
+		<button class="button2" id="submitSetButton">Submit Set</button>
+	</div>
+	<div class="section" id="conclusionStage" style="display: none">
+		<h1>Thanks for playing</h1>
+	</div>
+</body>
+
 </html>

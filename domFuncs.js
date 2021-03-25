@@ -45,7 +45,7 @@ document.getElementById('addPlayersForm').addEventListener('submit', e => {
  */
 function goToAddPlayersStage() {
 	introStage.style.display = 'none'
-	addPlayersStage.style.display = 'block'
+	addPlayersStage.style.display = 'grid'
 }
 
 /**
