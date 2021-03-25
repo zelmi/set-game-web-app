@@ -1,7 +1,10 @@
+* {
+	box-sizing: border-box;
+}
+
 body {
-	padding: 15px 15px 0px 50px;
-	display: flex;
-	justify-content: center;
+	padding: 0;
+	font-family: sans-serif;
 }
 
 /* first part  */
@@ -12,8 +15,8 @@ img#logo {
 }
 
 button {
-	background: #C1AD42;
-	width: 391px;
+	background: #c1ad42;
+	width: 400px;
 	height: 80px;
 	border: none;
 	/* font  */
@@ -21,19 +24,23 @@ button {
 	font-style: normal;
 	font-weight: normal;
 	font-size: 36px;
-	line-height: 42px;
-	color: #FFFFFF;
-	transition: 2s;
+	color: #ffffff;
+	transition: 0.2s;
+	cursor: pointer;
+	outline: none;
 }
 
 button:hover {
-	transform: scale(1.1);
+	transform: scale(1.01);
 }
 
 .bottom_button {
 	position: absolute;
-	left: 524px;
-	top: 705px;
+	left: calc(50% - 200px);
+	bottom: 90px;
+	width: 400px;
+	height: 50px;
+	font-size: 24px;
 }
 
 /* second part  */
@@ -47,28 +54,50 @@ h1 {
 	font-weight: 900;
 	font-size: 48px;
 	line-height: 56px;
-	color: #C1AD42;
+	color: #c1ad42;
+}
+
+#set-logo-container {
+	margin-top: 60px;
+	text-align: center;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+}
+
+#addPlayersList {
+	font-size: 22px;
+	height: 200px;
+	overflow-y: scroll;
+}
+
+#addPlayersList li {
+	margin-bottom: 10px;
+}
+
+#addPlayersStage {
+	text-align: center;
 }
 
 #addPlayersInput {
-	width: 391px;
-	position: absolute;
-	left: 520px;
-	top: 310px;
+	width: 400px;
 	height: 50px;
-	font-family: sans-serif;
+	margin-top: 50px;
+	padding-left: 15px;
+
 	font-style: normal;
 	font-weight: normal;
-	font-size: 24px;
+	font-size: 20px;
 	line-height: 42px;
 }
 
 #add_button {
-	position: absolute;
-	left: 524px;
-	top: 378px;
+	width: 400px;
 	height: 50px;
 	font-size: 24px;
+	margin-top: 70px;
 }
 
 /* third part  */
@@ -78,7 +107,7 @@ div.card {
 	height: 170px;
 	text-align: center;
 	display: flex;
-	border: 1px solid #000000;
+	outline: 1px solid #000000;
 }
 
 div.card img {
@@ -104,19 +133,18 @@ div.card img {
 	grid-template-rows: repeat(3, 1fr);
 	gap: 20px;
 	height: 574px;
-	width: 982px;
+	width: 1000px;
+	overflow-x: hidden;
 	overflow-y: scroll;
-}
-
-#sideboard {
-	padding-left: 60px;
+	padding: 15px;
+	margin-left: 50px;
 }
 
 #scoreboard {
-	width: 299px;
+	width: 281px;
 	height: 339px;
-	background: #FFFFFF;
-	border: 1px solid #C1AD42;
+	background: #ffffff;
+	border: 1px solid #c1ad42;
 	box-sizing: border-box;
 	/* font  */
 	font-family: Roboto;
@@ -125,16 +153,15 @@ div.card img {
 	font-size: 24px;
 	line-height: 28px;
 	text-align: center;
-	color: #C1AD42;
+	color: #c1ad42;
 }
 
 #addMoreCardsButton {
 	width: 281px;
 	height: 71.87px;
-	background: #FFFFFF;
-	border: 1px solid #C1AD42;
+	background: #ffffff;
+	border: 1px solid #c1ad42;
 	box-sizing: border-box;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 	/* font  */
 	font-family: Roboto;
 	font-style: normal;
@@ -142,12 +169,13 @@ div.card img {
 	font-size: 24px;
 	line-height: 28px;
 	text-align: center;
-	color: #C1AD42;
-	margin-left: 9px;
+	color: #c1ad42;
 	margin-top: 57px;
 }
 
 #submitSetButton {
-	position: absolute;
-	left: 524px;
+	margin-top: 25px;
+	width: 281px;
+	height: 50px;
+	font-size: 20px;
 }

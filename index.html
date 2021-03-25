@@ -9,17 +9,21 @@
 		<script src="./setLogic.js" defer></script>
 		<script src="./domFuncs.js" defer></script>
 	</head>
-
 	<body>
 		<div id="introStage" style="display: block">
-			<img src="images/set_logo.png" alt="" id="logo" />
+			<div id="set-logo-container">
+				<img src="images/set_logo.png" alt="" id="logo" />
+			</div>
 			<button class="bottom_button" onclick="goToAddPlayersStage()">Continue</button>
 		</div>
 		<div id="addPlayersStage" style="display: none">
 			<h1>Add Players!</h1>
 			<ul id="addPlayersList"></ul>
-			<input type="text" id="addPlayersInput" />
-			<button id="add_button" onclick="addPlayerToGame(players)">Add Player</button>
+			<form id="addPlayersForm">
+				<input type="text" id="addPlayersInput" autofocus />
+				<br />
+				<button id="add_button" type="submit">Add Player</button>
+			</form>
 			<button class="bottom_button" onClick="goToGameStage()">Continue</button>
 		</div>
 		<div id="gameStage" style="display: none">
@@ -32,9 +36,10 @@
 						<ul id="playerList"></ul>
 					</div>
 					<button id="addMoreCardsButton">Add More Cards</button>
+					<br />
+					<button id="submitSetButton">Submit Set</button>
 				</div>
 			</div>
-			<button id="submitSetButton">Submit Set</button>
 		</div>
 		<div id="conclusionStage" style="display: none">
 			<h1>Thanks for playing</h1>

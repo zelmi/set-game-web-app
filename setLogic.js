@@ -4,16 +4,18 @@
  */
 
 /**
+ * Creates a player DOM element seen in the sidebar
  *
  * @param {Player} player
  */
 const createPlayerElement = player => {
 	const newListItem = document.createElement('li')
-	newListItem.innerText = `${player.name}: ${player.currentScore}`
+	newListItem.innerText = `${player.name}: ${player.currentScore}, ${player.winCount}`
 	return newListItem
 }
 
 /**
+ * Handles the construction of a Player object
  *
  * @param {string} name
  */
@@ -25,7 +27,7 @@ function Player(name) {
 	this.element = createPlayerElement(this)
 
 	this.updateScore = function (score) {
-		this.element.innerText = `${this.name}: ${score}`
+		this.element.innerText = `${this.name}: ${score}, ${this.winCount}`
 	}
 
 	this.incrementScore = function () {
@@ -38,6 +40,8 @@ function Player(name) {
 }
 
 /**
+ * Creates the Card's DOM element, seen in the card grid
+ *
  * @param {Card} card
  * @returns {CardElement}
  */
@@ -63,7 +67,12 @@ const createCardElement = card => {
 }
 
 /**
+ * Handles the construction of a Card
  *
+ * @param {number} amount
+ * @param {string} color
+ * @param {string} symbol
+ * @param {string} shading
  */
 function Card(amount, color, symbol, shading) {
 	this.amount = amount
@@ -111,16 +120,8 @@ function Card(amount, color, symbol, shading) {
 const players = []
 
 /**
+ * Generates a shuffled deck of 81 cards
  *
- * @param {Card[]} cardsAvailable
- * @param {Card[]} cardsDisplayed
- * @param {number} amount
- */
-const addCardsToDisplayedFromAvailable = (cardsAvailable, cardsDisplayed, amount) => {
-	cardsDisplayed.push(...cardsAvailable.splice(0, amount))
-}
-
-/**
  * @returns {Card[]}
  */
 const generateDeck = () => {
@@ -143,6 +144,7 @@ const generateDeck = () => {
 }
 
 /**
+ * Determines if a set of three cards is a "set"
  *
  * @param  {Card} cardOne
  * @param  {Card} cardTwo
@@ -170,6 +172,7 @@ const isSet = (cardOne, cardTwo, cardThree) => {
 }
 
 /**
+ * Removes an array of cards' elements from the screen
  *
  * @param  {...Card} cards
  */
@@ -178,6 +181,7 @@ const removeCardsFromScreen = (...cards) => {
 }
 
 /**
+ * Draws an array of cards' elements to the screen
  *
  * @param  {...Card} cards
  */
@@ -186,6 +190,7 @@ const drawCardsToScreen = (...cards) => {
 }
 
 /**
+ * Removes cards from the available deck and adds them to the displayed
  *
  * @param {Card[]} cardsAvailable
  * @param {Card[]} cardsDisplayed
@@ -199,6 +204,8 @@ const removeCardsFromAvailableAddThemToDisplayed = (cardsAvailable, cardsDisplay
 }
 
 /**
+ * Removes cards from the available deck and adds them to the displayed,
+ * also displaying their elements to the screen
  *
  * @param {Card[]} cardsAvailable
  * @param {Card[]} cardsDisplayed
@@ -210,6 +217,7 @@ const removeCardsFromAvailableAddThemToDisplayedAndDrawThemToScreen = (cardsAvai
 }
 
 /**
+ * Removes cards from the displayed deck and adds them to the used deck
  *
  * @param {Card[]} cards
  * @param {Card[]} cardsDisplayed
@@ -226,6 +234,8 @@ const removeCardsFromDisplayedAddThemToUsed = (cards, cardsDisplayed, cardsUsed)
 }
 
 /**
+ * Removes cards from the displayed deck and adds them to the used deck,
+ * removing their elements from the screen
  *
  * @param {Card[]} cards
  * @param {Card[]} cardsDisplayed
@@ -237,10 +247,12 @@ const removeCardsFromDisplayedAddThemToUsedAndRemoveFromScreen = (cards, cardsDi
 }
 
 /**
+ * Initializes the event listeners and decks to play set.
+ * Only ran once, even between multiple games without reloading the page.
  *
  * @param {Player[]} players
  */
-const playSet = players => {
+const initSet = players => {
 	players.forEach(player => player.drawToScreen())
 
 	const cardsAvailable = generateDeck()
@@ -255,13 +267,16 @@ const playSet = players => {
 	 */
 	const cardsUsed = []
 
+	// Add the "submit cards" event listener
 	document.getElementById('submitSetButton').addEventListener('click', () => {
 		submitCardsToggled(cardsDisplayed, cardsUsed, cardsAvailable, players)
 	})
 
+	// Add the "add more cards" event listener
 	document.getElementById('addMoreCardsButton').addEventListener('click', () => {
 		removeCardsFromAvailableAddThemToDisplayedAndDrawThemToScreen(cardsAvailable, cardsDisplayed, 3)
 	})
 
+	// Add 12 cards to displayed by default
 	removeCardsFromAvailableAddThemToDisplayedAndDrawThemToScreen(cardsAvailable, cardsDisplayed, 12)
 }
