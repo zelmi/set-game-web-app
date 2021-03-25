@@ -6,7 +6,7 @@ The entirety of this game is programmed in ruby. It is a text-based game that st
 If the player is unable to find any sets, then hitting enter without typing anything into the console will add three more cards to the display. The player may do this as many times as needed to find a set. If the player wishes to quit during the game, either because they can't find any more sets or they want to stop playing, they can enter "quit", and the game will prompt them asking if they are ready to quit, which they can input "yes" or "y" to confirm. The game will then end.
 Once the game ends, the game will announce which player is the winner and the number of points they scored. The user will then be asked if they want to play again. If the user inputs "no" or "n", then the program will terminate and the game is officially over. Otherwise the game will keep track of the previous winners and add their win to a win tally, and the game will start again and reshuffle the deck to lay out a new set of 12 cards to start with.
 
-## How to play this project
+## How to Play This Project
 
 To run the game, navigate to the downloaded folder, and then the src folder, and then open the included index.html file in Mozilla Firefox.
 
